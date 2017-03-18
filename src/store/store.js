@@ -10,6 +10,8 @@ export default new Vuex.Store({
     mutations: {
         UPDATE_CHAPTER(state, id){
             state.chapterId = id;
+            const articles = articleHelper.Filter(state.articles, state.chapterId);
+            state.currentArticle = articles[0];
         },
         UPDATE_SELECT_ARTICLE(state, article){
             state.currentArticle = article;
