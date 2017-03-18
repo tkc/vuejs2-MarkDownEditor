@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as type from '../type/types'
 import * as articleHelper from '../helper/articleHelper'
+import * as areaHelper from '../helper/areaHelper'
 
 Vue.use(Vuex);
 
@@ -12,11 +13,13 @@ export default new Vuex.Store({
             state.chapterId = id;
             const articles = articleHelper.Filter(state.articles, state.chapterId);
             state.currentArticle = articles[0];
+            areaHelper.hideEditor(state);
         },
         UPDATE_SELECT_ARTICLE(state, article){
             state.currentArticle = article;
             state.writingText = article.text;
             articleHelper.Select(state.articles, state.currentArticle.id);
+            areaHelper.hideEditor(state);
         },
         UPDATE_TEXT(state, updateText){
             state.writingText = updateText;
@@ -29,11 +32,19 @@ export default new Vuex.Store({
             article.title = title;
             article.chapterId = state.chapterId;
             articleHelper.Add(state.articles, article);
+            state.writingText = "";
             state.currentArticle = article;
+            areaHelper.showEditor(state);
         },
         DELETE_ARTICLE(state, {commit}){
             state.articles = articleHelper.DeleteItem(state.articles, state.currentArticle.id);
             commit('UPDATE_SELECT_ARTICLE', state.articles[0])
+        },
+        SHOW_EDITOR(state){
+            areaHelper.showEditor(state);
+        },
+        HIDE_EDITOR(state){
+            areaHelper.hideEditor(state);
         },
     },
     actions: {
@@ -52,11 +63,19 @@ export default new Vuex.Store({
         deleteArticle({commit}){
             commit('DELETE_ARTICLE', {commit})
         },
+        showEditor({commit}){
+            commit('SHOW_EDITOR', {commit})
+        },
+        hideEditor({commit}){
+            commit('HIDE_EDITOR', {commit})
+        },
     },
     getters: {
         getArticles: state => articleHelper.Filter(state.articles, state.chapterId),
         getWritingText: state => state.writingText,
         selectedArticleId: state => state.selectedArticleId,
         getCurrentArticle: state => state.currentArticle,
+        htmlEditorIsActive: state => state.areaHtml.hideEditor.flag,
+        htmlEditorIsActiveTitle: state => state.areaHtml.hideEditor.title,
     }
 })

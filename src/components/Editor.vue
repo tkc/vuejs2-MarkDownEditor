@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-area">
+    <div class="edit-area" :class="{ hide: isActive }">
         <h2>{{getTitle}}</h2>
         <textarea
                 ref="input"
@@ -12,13 +12,16 @@
 
 <script>
     export default{
+        data(){
+            return {}
+        },
         methods: {
             update(e){
                 this.$store.dispatch('updateText', e.target.value);
             },
             deleteItem(){
                 this.$store.dispatch('deleteArticle');
-            }
+            },
         },
         computed: {
             writingText() {
@@ -26,8 +29,11 @@
             },
             getTitle() {
                 const c = this.$store.getters.getCurrentArticle;
-                return c.title;
-            }
+                return c ? c.title : "";
+            },
+            isActive() {
+                return this.$store.getters.htmlEditorIsActive;
+            },
         }
     }
 </script>
@@ -36,6 +42,7 @@
     .edit-area {
         width: 100%;
     }
+
     .edit-area textarea {
         width: 100%;
     }
