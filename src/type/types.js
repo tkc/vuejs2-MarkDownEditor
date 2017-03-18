@@ -28,23 +28,23 @@ let comment = {
 let areaHtml = {
     hideChapter: {
         flag: false,
-        title: "閉じる",
+        title: "close",
     },
     hideArticles: {
         flag: false,
-        title: "閉じる",
+        title: "close",
     },
     hideEditor: {
         flag: false,
-        title: "閉じる",
+        title: "close",
     },
     hideMarkDown: {
         flag: false,
-        title: "閉じる",
+        title: "close",
     },
     hideComments: {
         flag: false,
-        title: "閉じる",
+        title: "close",
     }
 };
 
