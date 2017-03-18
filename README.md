@@ -1,3 +1,3 @@
-# vuejs2-MarkDownEditor
+# Vuejs2-MarkDownEditor
 
 under heavy development.
