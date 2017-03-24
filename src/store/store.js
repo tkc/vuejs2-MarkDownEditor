@@ -1,14 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import * as init from './init'
 import * as type from '../type/types'
 import * as articleHelper from '../helper/articleHelper'
 import * as areaHelper from '../helper/areaHelper'
+import * as chapterHelper from '../helper/chapterHelper'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: type.getState(),
     mutations: {
+        INIT(state){
+            init.user(state);
+            init.chapters(state);
+            init.articles(state);
+        },
         UPDATE_CHAPTER(state, id){
             state.chapterId = id;
             const articles = articleHelper.Filter(state.articles, state.chapterId);
@@ -26,14 +34,18 @@ export default new Vuex.Store({
             state.currentArticle.text = updateText;
             articleHelper.updateText(state.articles, state.currentArticle.id, updateText);
         },
+        UPDATE_TITLE(state, title){
+            state.currentArticle.title = title;
+            articleHelper.updateTitle(state.articles, state.currentArticle.id, title);
+        },
         ADD_ARTICLE(state, title){
+            state.writingText = "";
             const newId = Math.floor(Math.random() * 9999);
             let article = articleHelper.GetInitArticle(newId);
             article.title = title;
             article.chapterId = state.chapterId;
-            articleHelper.Add(state.articles, article);
-            state.writingText = "";
             state.currentArticle = article;
+            articleHelper.Add(state.articles, article);
             areaHelper.showEditor(state);
         },
         DELETE_ARTICLE(state, {commit}){
@@ -48,8 +60,14 @@ export default new Vuex.Store({
         },
     },
     actions: {
+        init({commit}){
+            commit('INIT')
+        },
         updateChapterId({commit}, id){
             commit('UPDATE_CHAPTER', id)
+        },
+        updateTitle({commit}, title){
+            commit('UPDATE_TITLE', title)
         },
         updateText({commit}, updateText){
             commit('UPDATE_TEXT', updateText)
@@ -71,6 +89,7 @@ export default new Vuex.Store({
         },
     },
     getters: {
+        getChapters: state => state.chapters,
         getArticles: state => articleHelper.Filter(state.articles, state.chapterId),
         getWritingText: state => state.writingText,
         selectedArticleId: state => state.selectedArticleId,

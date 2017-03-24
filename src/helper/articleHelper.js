@@ -12,6 +12,14 @@ export const Select = (articles, selectedId) => {
     articles.forEach(article => selectedId === article.id ? article.isSelect = true : article.isSelect = false);
 };
 
+export const updateTitle = (articles, id, title) => {
+    articles.forEach(article => {
+        if (id === article.id) {
+            article.text = title;
+        }
+    });
+};
+
 export const updateText = (articles, id, updateText) => {
     articles.forEach(article => {
         if (id === article.id) {

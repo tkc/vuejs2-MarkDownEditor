@@ -1,16 +1,18 @@
 <template>
-    <div class="edit-area" :class="{ hide: isActive }">
-        <h2>{{getTitle}}</h2>
-        <textarea
-                ref="input"
-                v-model="writingText"
-                @input="update">
+    <div>
+        <EditTitle></EditTitle>
+        <div class="edit-area" :class="{ hide: isActive }">
+        <textarea ref="input"
+                  v-model="writingText"
+                  @input="update">
         </textarea>
-        <button type="button" @click="deleteItem()" class="btn btn-default btn-sm">Delete</button>
+            <button type="button" @click="deleteItem()" class="btn btn-default btn-sm">Delete</button>
+        </div>
     </div>
 </template>
 
 <script>
+    import EditTitle from './EditTitle.vue'
     export default{
         data(){
             return {}
@@ -34,7 +36,10 @@
             isActive() {
                 return this.$store.getters.htmlEditorIsActive;
             },
-        }
+        },
+        components: {
+            EditTitle,
+        },
     }
 </script>
 

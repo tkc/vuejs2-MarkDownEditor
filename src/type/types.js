@@ -4,8 +4,17 @@ let user = {
     iconImage: '',
 };
 
+let chapter = {
+    id: 0,
+    title: '',
+    updateAt: '',
+    isShow: true,
+    isSelect: false,
+};
+
 let article = {
     id: 0,
+    parentId: 0,
     type: 0,
     user_id: 0,
     chapterId: 0,
@@ -51,13 +60,17 @@ let areaHtml = {
 let state = {
     user: user,
     chapterId: 0,
+    chapters: [],
     articles: [],
+    articleDetails: [],
     comments: [],
     writingText: '',
     currentArticle: article,
+    currentChapter: chapter,
     currentComment: comment,
     areaHtml: areaHtml,
 };
 
 export const getState = () => state;
 export const getArticle = () => article;
+export const getChapter = () => chapter;
