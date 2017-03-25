@@ -13,6 +13,12 @@ let chapter = {
     isSelect: false,
 };
 
+const articleType = {
+    master: "master",
+    child: "child",
+    result: "result",
+};
+
 let article = {
     id: 0,
     parentId: 0,
