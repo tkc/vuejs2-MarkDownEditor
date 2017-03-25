@@ -8,16 +8,15 @@ export const GetInitChapter = newId => {
     return newChapter;
 };
 
-export const Filter = (chapters, selectedId) => {
-    chapters.forEach(chapter => selectedId === chapter.id ? chapter.isSelect = true : chapter.isSelect = false);
-};
-
 export const updateTitle = (chapters, id, title) => {
     chapters.forEach(chapter => {
-        if (id === chapter.id) {
-            chapter.text = title;
-        }
+        id === chapter.id ? chapter.text = title : null;
     });
+};
+
+export const getSelected = (chapters, selectedId) => {
+    const filtered = chapters.filter(chapter => chapter.id == selectedId);
+    return filtered[0];
 };
 
 export const Add = (chapters, chapter) => chapters.push(chapter);

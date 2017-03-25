@@ -25,6 +25,9 @@
     import Edit from './components/layout/Edit.vue'
     import Chapter from './components/layout/Chapter.vue'
     export default {
+        mounted() {
+            this.$store.dispatch('init');
+        },
         components: {
             HeaderTitle,
             Edit,

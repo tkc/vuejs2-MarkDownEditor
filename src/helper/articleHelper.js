@@ -30,5 +30,5 @@ export const updateText = (articles, id, updateText) => {
 };
 
 export const Add = (articles, article) => articles.push(article);
-export const Filter = (articles, chapterId) => articles.filter(article => article.chapterId == chapterId).filter(article => article.isShow == true);
 export const DeleteItem = (articles, id) => articles.filter(article => article.id != id);
+export const Filter = (articles, chapterId) => articles.filter(article => article.chapterId == chapterId).filter(article => article.isShow == true);

@@ -1,9 +1,9 @@
 <template>
     <div>
         <p>chapter</p>
-        <select v-model="selected" class="form-control">
-            <option v-for="option in options" :value="option.value">
-                {{ option.text }}
+        <select v-model="chapterId" class="form-control">
+            <option v-for="chapter in chapters" :value="chapter.id">
+                {{chapter.title}}
             </option>
         </select>
     </div>
@@ -13,18 +13,20 @@
     export default{
         data(){
             return {
-                selected: 1,
-                options: [
-                    {text: 'Chapter One', value: 1},
-                    {text: 'Chapter Two', value: 2},
-                    {text: 'Chapter  Three', value: 3}
-                ]
             }
         },
         watch: {
             selected (selected) {
                 this.$store.dispatch('updateChapterId', selected);
             }
+        },
+        computed: {
+            chapterId() {
+                return this.$store.getters.getChapterSelectedId;
+            },
+            chapters() {
+                return this.$store.getters.getChapters;
+            },
         },
         mounted() {
             // todo

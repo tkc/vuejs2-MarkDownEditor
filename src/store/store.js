@@ -17,11 +17,16 @@ export default new Vuex.Store({
             init.chapters(state);
             init.articles(state);
         },
-        UPDATE_CHAPTER(state, id){
+        UPDATE_SELECTED_CHAPTER_ID(state, id){
             state.chapterId = id;
-            const articles = articleHelper.Filter(state.articles, state.chapterId);
-            state.currentArticle = articles[0];
-            areaHelper.hideEditor(state);
+            state.currentChapter = chapterHelper.getSelected(id);
+        },
+        ADD_CHAPTER(state, title){
+            const newId = Math.floor(Math.random() * 9999);
+            let chapter = chapterHelper.GetInitChapter(newId);
+            chapter.title = title;
+            chapterHelper.Add(state.chapters, chapter);
+            state.currentChapter = chapter;
         },
         UPDATE_SELECT_ARTICLE(state, article){
             state.currentArticle = article;
@@ -64,7 +69,10 @@ export default new Vuex.Store({
             commit('INIT')
         },
         updateChapterId({commit}, id){
-            commit('UPDATE_CHAPTER', id)
+            commit('UPDATE_SELECTED_CHAPTER_ID', id)
+        },
+        addChapter({commit}, title){
+            commit('ADD_CHAPTER', title)
         },
         updateTitle({commit}, title){
             commit('UPDATE_TITLE', title)
@@ -90,6 +98,7 @@ export default new Vuex.Store({
     },
     getters: {
         getChapters: state => state.chapters,
+        getChapterSelectedId: state => state.currentChapter.id,
         getArticles: state => articleHelper.Filter(state.articles, state.chapterId),
         getWritingText: state => state.writingText,
         selectedArticleId: state => state.selectedArticleId,
