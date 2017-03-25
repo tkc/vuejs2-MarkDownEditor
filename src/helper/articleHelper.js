@@ -14,9 +14,7 @@ export const Select = (articles, selectedId) => {
 
 export const updateTitle = (articles, id, title) => {
     articles.forEach(article => {
-        if (id === article.id) {
-            article.text = title;
-        }
+        id === article.id ? article.text = title : null;
     });
 };
 

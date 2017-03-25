@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="col-md-3">
+
         <div class="form-group">
             <input type="text"
                    name="title"

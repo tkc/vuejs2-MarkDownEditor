@@ -8,14 +8,14 @@ export const user = state => {
 };
 
 export const chapters = state => {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 20; i++) {
         const title = "chapter_" + i;
         chapterHelper.Add(state, title);
     }
 };
 
 export const articles = state => {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 300; i++) {
         const newId = Math.floor(Math.random() * 9999);
         let article = articleHelper.GetInitArticle(newId);
         article.title = "article" + i;

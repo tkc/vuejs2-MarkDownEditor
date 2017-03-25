@@ -25,8 +25,8 @@
 
 <script>
     import HeaderTitle from './components/layout/Header.vue'
-    import Edit from './components/layout/Edit.vue'
     import Chapter from './components/layout/Chapter.vue'
+    import Edit from './components/layout/Edit.vue'
     export default {
         computed: {
             isChapter() {
@@ -41,8 +41,8 @@
         },
         components: {
             HeaderTitle,
-            Edit,
-            Chapter
+            Chapter,
+            Edit
         }
     }
 </script>

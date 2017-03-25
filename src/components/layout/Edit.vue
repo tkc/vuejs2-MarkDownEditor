@@ -1,17 +1,11 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <Chapter></Chapter>
-            </div>
+            <Chapter></Chapter>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <ArticleList></ArticleList>
-            </div>
-            <div class="col-md-10">
-                <MarkDown></MarkDown>
-            </div>
+            <ArticleList></ArticleList>
+            <MarkDown></MarkDown>
         </div>
     </div>
 </template>
