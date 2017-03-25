@@ -16,10 +16,12 @@ export default new Vuex.Store({
             init.user(state);
             init.chapters(state);
             init.articles(state);
+            init.html(state);
         },
+        // Chapter
         UPDATE_SELECTED_CHAPTER_ID(state, id){
             state.chapterId = id;
-            state.currentChapter = chapterHelper.getSelected(id);
+            state.currentChapter = chapterHelper.getSelected(state.chapters, id);
         },
         ADD_CHAPTER(state, title){
             const newId = Math.floor(Math.random() * 9999);
@@ -28,6 +30,7 @@ export default new Vuex.Store({
             chapterHelper.Add(state.chapters, chapter);
             state.currentChapter = chapter;
         },
+        // Article
         UPDATE_SELECT_ARTICLE(state, article){
             state.currentArticle = article;
             state.writingText = article.text;
@@ -57,6 +60,10 @@ export default new Vuex.Store({
             state.articles = articleHelper.DeleteItem(state.articles, state.currentArticle.id);
             commit('UPDATE_SELECT_ARTICLE', state.articles[0])
         },
+        // Html
+        LAYOUT_CHAPTER_SWITCH(state){
+            areaHelper.LayoutChapterSwitch(state);
+        },
         SHOW_EDITOR(state){
             areaHelper.showEditor(state);
         },
@@ -68,12 +75,14 @@ export default new Vuex.Store({
         init({commit}){
             commit('INIT')
         },
+        // Chapter
         updateChapterId({commit}, id){
             commit('UPDATE_SELECTED_CHAPTER_ID', id)
         },
         addChapter({commit}, title){
             commit('ADD_CHAPTER', title)
         },
+        // Article
         updateTitle({commit}, title){
             commit('UPDATE_TITLE', title)
         },
@@ -89,6 +98,10 @@ export default new Vuex.Store({
         deleteArticle({commit}){
             commit('DELETE_ARTICLE', {commit})
         },
+        // Html
+        layoutChapterSwitch({commit}){
+            commit('LAYOUT_CHAPTER_SWITCH', {commit})
+        },
         showEditor({commit}){
             commit('SHOW_EDITOR', {commit})
         },
@@ -97,13 +110,18 @@ export default new Vuex.Store({
         },
     },
     getters: {
+        // Chapter
         getChapters: state => state.chapters,
         getChapterSelectedId: state => state.currentChapter.id,
+        // Article
         getArticles: state => articleHelper.Filter(state.articles, state.chapterId),
         getWritingText: state => state.writingText,
         selectedArticleId: state => state.selectedArticleId,
         getCurrentArticle: state => state.currentArticle,
-        htmlEditorIsActive: state => state.areaHtml.hideEditor.flag,
-        htmlEditorIsActiveTitle: state => state.areaHtml.hideEditor.title,
+        // Html
+        htmlLayoutChapter: state => state.areaHtml.chapter.main.flag,
+        htmlLayoutEditor: state => state.areaHtml.editor.main.flag,
+        htmlEditorIsActive: state => state.areaHtml.editor.editor.flag,
+        htmlEditorIsActiveTitle: state => state.areaHtml.editor.editor.switchButtonTitle,
     }
 })

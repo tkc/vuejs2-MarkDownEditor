@@ -34,27 +34,49 @@ let comment = {
     isShow: true,
 };
 
+let areaAttribute = {
+    flag: false,
+    borderColor: "",
+    backGroundColor: "",
+    switchButtonTitle: "close",
+};
+
 let areaHtml = {
-    hideChapter: {
-        flag: false,
-        title: "close",
+    header: {
+        main: {
+            areaAttribute,
+        }
     },
-    hideArticles: {
-        flag: false,
-        title: "close",
+    chapter: {
+        main: {
+            areaAttribute,
+        }
     },
-    hideEditor: {
-        flag: false,
-        title: "close",
+    editor: {
+        main: {
+            areaAttribute,
+        },
+        chapter: {
+            areaAttribute,
+        },
+        articles: {
+            areaAttribute,
+        },
+        editor: {
+            areaAttribute,
+        },
+        markDown: {
+            areaAttribute,
+        },
+        comments: {
+            areaAttribute,
+        }
     },
-    hideMarkDown: {
-        flag: false,
-        title: "close",
+    footer: {
+        main: {
+            areaAttribute,
+        }
     },
-    hideComments: {
-        flag: false,
-        title: "close",
-    }
 };
 
 let state = {

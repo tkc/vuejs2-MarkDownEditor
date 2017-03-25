@@ -29,3 +29,7 @@ export const articles = state => {
     }
     areaHelper.showEditor(state);
 };
+
+export const html = state => {
+    areaHelper.LayoutChapterSwitch(state);
+};
