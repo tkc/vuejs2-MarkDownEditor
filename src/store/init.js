@@ -9,12 +9,8 @@ export const user = state => {
 
 export const chapters = state => {
     for (let i = 0; i < 3; i++) {
-        const newId = Math.floor(Math.random() * 9999);
-        let chapter = chapterHelper.GetInitChapter(newId);
-        chapter.title = "chapter_" + i;
-        chapterHelper.Add(state.chapters, chapter);
-        state.chapterId = chapter.id;
-        state.currentChapter = chapter;
+        const title = "chapter_" + i;
+        chapterHelper.Add(state, title);
     }
 };
 

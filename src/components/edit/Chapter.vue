@@ -1,6 +1,5 @@
 <template>
     <div>
-        <p>chapter</p>
         <select v-model="chapterId" class="form-control">
             <option v-for="chapter in chapters" :value="chapter.id">
                 {{chapter.title}}
@@ -11,9 +10,8 @@
 
 <script>
     export default{
-        data(){
-            return {
-            }
+        data () {
+            return {}
         },
         watch: {
             selected (selected) {
@@ -21,16 +19,12 @@
             }
         },
         computed: {
-            chapterId() {
+            chapterId () {
                 return this.$store.getters.getChapterSelectedId;
             },
-            chapters() {
+            chapters () {
                 return this.$store.getters.getChapters;
             },
         },
-        mounted() {
-            // todo
-            this.$store.dispatch('updateChapterId', 1);
-        }
     }
 </script>

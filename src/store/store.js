@@ -21,14 +21,19 @@ export default new Vuex.Store({
         // Chapter
         UPDATE_SELECTED_CHAPTER_ID(state, id){
             state.chapterId = id;
-            state.currentChapter = chapterHelper.getSelected(state.chapters, id);
+            chapterHelper.getSelected(state, id);
         },
         ADD_CHAPTER(state, title){
-            const newId = Math.floor(Math.random() * 9999);
-            let chapter = chapterHelper.GetInitChapter(newId);
-            chapter.title = title;
-            chapterHelper.Add(state.chapters, chapter);
-            state.currentChapter = chapter;
+            chapterHelper.Add(state, title);
+        },
+        UPDATE_ORDER_CHAPTER(state, param){
+            chapterHelper.updateOrder(state, param.id,param.isUp);
+        },
+        UPDATE_CHAPTER_TITLE(state, param){
+            chapterHelper.updateTitle(state, param.id, param.title);
+        },
+        DELETE_CHAPTER(state, id){
+            chapterHelper.deleteChapter(state, id);
         },
         // Article
         UPDATE_SELECT_ARTICLE(state, article){
@@ -76,11 +81,24 @@ export default new Vuex.Store({
             commit('INIT')
         },
         // Chapter
+        addChapter({commit}, title){
+            commit('ADD_CHAPTER', title)
+        },
+        // Chapter
         updateChapterId({commit}, id){
             commit('UPDATE_SELECTED_CHAPTER_ID', id)
         },
         addChapter({commit}, title){
             commit('ADD_CHAPTER', title)
+        },
+        updateOrderChapter({commit}, param){
+            commit('UPDATE_ORDER_CHAPTER', param)
+        },
+        updateChapterTitle({commit}, param){
+            commit('UPDATE_CHAPTER_TITLE', param)
+        },
+        deleteChapter({commit}, id){
+            commit('DELETE_CHAPTER', id)
         },
         // Article
         updateTitle({commit}, title){

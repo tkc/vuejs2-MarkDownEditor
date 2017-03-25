@@ -6,6 +6,7 @@ let user = {
 
 let chapter = {
     id: 0,
+    orderNum: 0,
     title: '',
     updateAt: '',
     isShow: true,

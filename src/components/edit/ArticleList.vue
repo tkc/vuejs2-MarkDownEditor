@@ -56,7 +56,6 @@
             ButtonType,
         },
         mounted() {
-            this.$store.dispatch('addArticle', "First");
         }
     }
 </script>
