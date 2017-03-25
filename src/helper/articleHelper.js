@@ -12,6 +12,14 @@ export const Select = (articles, selectedId) => {
     articles.forEach(article => selectedId === article.id ? article.isSelect = true : article.isSelect = false);
 };
 
+export const updateTitle = (articles, id, title) => {
+    articles.forEach(article => {
+        if (id === article.id) {
+            article.text = title;
+        }
+    });
+};
+
 export const updateText = (articles, id, updateText) => {
     articles.forEach(article => {
         if (id === article.id) {
@@ -22,5 +30,5 @@ export const updateText = (articles, id, updateText) => {
 };
 
 export const Add = (articles, article) => articles.push(article);
-export const Filter = (articles, chapterId) => articles.filter(article => article.chapterId == chapterId).filter(article => article.isShow == true);
 export const DeleteItem = (articles, id) => articles.filter(article => article.id != id);
+export const Filter = (articles, chapterId) => articles.filter(article => article.chapterId == chapterId).filter(article => article.isShow == true);
