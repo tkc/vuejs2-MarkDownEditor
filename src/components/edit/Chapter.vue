@@ -1,11 +1,9 @@
 <template>
-    <div class="col-md-12">
-        <select v-model="chapterId" class="form-control">
-            <option v-for="chapter in chapters" :value="chapter.id">
-                {{chapter.title}}
-            </option>
-        </select>
-    </div>
+    <select v-model="chapterId" class="form-control">
+        <option v-for="chapter in chapters" :value="chapter.id">
+            {{chapter.title}}
+        </option>
+    </select>
 </template>
 
 <script>

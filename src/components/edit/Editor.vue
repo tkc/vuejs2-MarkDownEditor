@@ -43,8 +43,3 @@
     }
 </script>
 
-<style>
-    .edit-area textarea {
-        width: 100%;
-    }
-</style>

@@ -36,14 +36,3 @@
     }
 </script>
 
-<style>
-    textarea {
-        border: none;
-        border-right: 1px solid #ccc;
-        resize: none;
-        outline: none;
-        background-color: #f6f6f6;
-        font-size: 14px;
-        font-family: 'Monaco', courier, monospace;
-    }
-</style>

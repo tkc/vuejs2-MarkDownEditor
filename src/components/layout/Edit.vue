@@ -1,9 +1,6 @@
 <template>
     <div class="container">
         <div class="row">
-            <Chapter></Chapter>
-        </div>
-        <div class="row">
             <ArticleList></ArticleList>
             <MarkDown></MarkDown>
         </div>
