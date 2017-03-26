@@ -1,0 +1,22 @@
+body {
+  background: rgba(102, 51, 153, 0.05);
+}
+
+.container {
+  width: 100%;
+  padding: 0px;
+}
+
+textarea {
+  border: none;
+  resize: none;
+  outline: none;
+  width: 100%;
+  background: #aba4b5;
+  height: 300px;
+}
+
+.hide {
+  display: none;
+}
+

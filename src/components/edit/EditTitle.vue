@@ -32,6 +32,8 @@
         },
         methods: {
             editTitle(){
+                const c = this.$store.getters.getCurrentArticle;
+                this.title = c.title;
                 this.editSwitch.reverse();
             },
             update(){
@@ -48,9 +50,5 @@
                 return c ? c.title : "";
             }
         },
-        mounted() {
-            const c = this.$store.getters.getCurrentArticle;
-            this.title = c.title;
-        }
     }
 </script>
