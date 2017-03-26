@@ -5,4 +5,3 @@ import store from './store/store'
 
 Vue.use(VeeValidate);
 new Vue({el: '#app', store, render: h => h(App)});
-

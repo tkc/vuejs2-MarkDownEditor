@@ -1,11 +1,14 @@
 <template>
     <div id="mark-down" class="col-md-9">
+        <div class="row">
             <div class=".col-sm-12 col-md-12">
-                <EditTitle></EditTitle>
+                <EditTitle/>
             </div>
-
-        <Editor></Editor>
-        <EditorPreView></EditorPreView>
+        </div>
+        <div class="row">
+            <Editor/>
+            <EditorPreView/>
+        </div>
     </div>
 </template>
 

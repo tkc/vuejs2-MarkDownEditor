@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <List></List>
+            <List/>
         </div>
     </div>
 </template>
