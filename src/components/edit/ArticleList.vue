@@ -19,7 +19,7 @@
                     AddNew
                 </button>
             </div>
-
+            
             <div class="form-group">
                 <ul class="list-group">
                     <li class="list-group-item" v-for="article in articles" @click="select(article)" >

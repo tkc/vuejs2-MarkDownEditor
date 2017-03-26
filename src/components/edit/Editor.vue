@@ -4,10 +4,7 @@
             <div class=".col-sm-12 col-md-12">
                 <div class="edit-area" :class="{ hide: isActive }">
                     <button type="button" @click="deleteItem()" class="btn btn-default btn-sm">Delete</button>
-                    <textarea ref="input"
-                              v-model="writingText"
-                              @input="update">
-                </textarea>
+                    <textarea ref="input" v-model="writingText" @input="update"></textarea>
                 </div>
             </div>
         </div>

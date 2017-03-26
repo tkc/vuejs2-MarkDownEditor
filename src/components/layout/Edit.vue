@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="row">
-            <ArticleList></ArticleList>
-            <MarkDown></MarkDown>
+            <ArticleList/>
+            <MarkDown/>
         </div>
     </div>
 </template>
